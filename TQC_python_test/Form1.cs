@@ -24,19 +24,26 @@ namespace TQC_python_test
             min = 100; sec = 0;
             timer1.Start();
             Random r = new Random();
+            
             for (int i = 0; i < 9; i++)
             {
-                int rn = r.Next(11);
+                int rn = r.Next(1,11);
                 string f = "";
                 if (rn < 10)
                 {
                    f = "0" + rn.ToString();
                 }
-                P_list.Add("p" + (i + 1).ToString() + f);
+                else if(rn == 10)
+                {
+                    P_list.Add("PYD" + (i + 1).ToString() + "10");
+                    continue;
+               }
+                 P_list.Add("PYD" + (i + 1).ToString() + $"{f.ToString()}");
             }
-            StreamReader s = new StreamReader($"./{P_list[n]}.txt");
+            StreamReader s = new StreamReader($"./TQC-Problem-list/{P_list[n]}.txt");
             textBox3.Text = s.ReadToEnd();
             s.Close();
+            label3.Text = $"第{n + 1}/{P_list.Count()}題";
         }
 
         private void button2_Click(object sender, EventArgs e)//退出
@@ -47,7 +54,7 @@ namespace TQC_python_test
         private void button3_Click(object sender, EventArgs e)//第一題
         {
             n = 0;
-            StreamReader s = new StreamReader($"./{P_list[n]}.txt");
+            StreamReader s = new StreamReader($"./TQC-Problem-list/{P_list[n]}.txt");
             textBox3.Text = s.ReadToEnd();
             s.Close();
             label3.Text = $"第{n + 1}/{P_list.Count()}題";
@@ -59,7 +66,7 @@ namespace TQC_python_test
             if (n - 1 >= 0)
             {
                 n--;
-                StreamReader s = new StreamReader($"./{P_list[n]}.txt");
+                StreamReader s = new StreamReader($"./TQC-Problem-list/{P_list[n]}.txt");
                 textBox3.Text = s.ReadToEnd();
                 s.Close();
                 label3.Text = $"第{n + 1}/{P_list.Count()}題";
@@ -72,7 +79,7 @@ namespace TQC_python_test
             if (n + 1 < P_list.Count())
             {
                 n++;
-                StreamReader s = new StreamReader($"./{P_list[n]}.txt");
+                StreamReader s = new StreamReader($"./TQC-Problem-list/{P_list[n]}.txt");
                 textBox3.Text = s.ReadToEnd();
                 s.Close();
                 label3.Text = $"第{n + 1}/{P_list.Count()}題";
@@ -82,7 +89,7 @@ namespace TQC_python_test
         private void button6_Click(object sender, EventArgs e)//最後一題
         {
             n = P_list.Count() - 1;
-            StreamReader s = new StreamReader($"./{P_list[n]}.txt");
+            StreamReader s = new StreamReader($"./TQC-Problem-list/{P_list[n]}.txt");
             textBox3.Text = s.ReadToEnd();
             s.Close();
             label3.Text = $"第{n + 1}/{P_list.Count()}題";
