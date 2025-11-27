@@ -24,7 +24,7 @@ namespace TQC_python_test
             min = 100; sec = 0;
             timer1.Start();
             Random r = new Random();
-            
+            P_list = new List<string>();
             for (int i = 0; i < 9; i++)
             {
                 int rn = r.Next(1,11);
@@ -84,6 +84,11 @@ namespace TQC_python_test
                 s.Close();
                 label3.Text = $"第{n + 1}/{P_list.Count()}題";
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
         }
 
         private void button6_Click(object sender, EventArgs e)//最後一題
