@@ -19,8 +19,18 @@ namespace TQC_python_test
         }
         List<string> P_list = new List<string>();//題目清單
         int min = 0, sec = 0, n = 0;
+
+        private void reset()//重置所有設定,防止題庫等等疊加上去
+        {
+            min = new int();
+            sec = new int();
+            P_list = new List<string>();
+            n = new int();
+
+        }
         private void button1_Click(object sender, EventArgs e)//開始測試
         {
+            reset();
             min = 100; sec = 0;
             timer1.Start();
             Random r = new Random();
